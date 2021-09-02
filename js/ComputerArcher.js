@@ -12,17 +12,13 @@ class ComputerArcher{
     }
 
     display(){
-        if (move ==="UP" && computerArcher.body.angle < 1.77){
-            angleValue = 0.1;
-        }else{
-            angleValue = -0.1;
-        }
-
-        if (move ==="DOWN" && computerArcher.body.angle < 1.47){
-            angleValue = -0.1;
-        }else{
-            angleValue = 0.1;
-        }
+        if (keyIsDown(RIGHT_ARROW) && this.angle < 0.35) {
+            this.angle += 0.02;
+          }
+      
+          if (keyIsDown(LEFT_ARROW) && this.angle > -1.45) {
+            this.angle -= 0.02;
+          }
         var pos = this.body.position;
         var angle = this.body.angle;
     
