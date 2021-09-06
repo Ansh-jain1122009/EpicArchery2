@@ -12,16 +12,18 @@ class PlayerArcher{
     }
 
     display(){
-        if (keyIsDown(RIGHT_ARROW) && this.angle < 0.35) {
-            this.angle += 0.02;
-          }
-      
-          if (keyIsDown(LEFT_ARROW) && this.angle > -1.45) {
-            this.angle -= 0.02;
-          }
 
         var pos = this.body.position;
         var angle = this.body.angle;
+        if (keyIsDown(DOWN_ARROW) && angle < -1.2) {
+          angle += 0.01;
+          Matter.Body.setAngle(this.body, angle);
+        }
+    
+        if (keyIsDown(UP_ARROW) && angle > -1.9) {
+          angle -= 0.01;
+          Matter.Body.setAngle(this.body, angle);
+        }
     
         push();
         translate(pos.x, pos.y);
