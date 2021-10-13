@@ -5,7 +5,7 @@ const Constraint = Matter.Constraint;
 
 var engine, world;
 var canvas;
-var player, playerBase;
+var palyer, playerBase;
 var computer, computerBase;
 
 var arrow;
@@ -19,14 +19,13 @@ function setup() {
 
   playerBase = new PlayerBase(300, random(450, height - 300), 180, 150);
   player = new Player(285, playerBase.body.position.y - 153, 50, 180);
- 
-  //Create Player Archer Object
   playerArcher = new PlayerArcher(
-    width - 990,
-    playerBase.body.position.y - 173,
+    340,
+    playerBase.body.position.y - 180,
     120,
     120
   );
+
   computerBase = new ComputerBase(
     width - 300,
     random(450, height - 300),
@@ -46,9 +45,8 @@ function setup() {
     120
   );
   
-  //Create an arrow Object
-  arrow = new PlayerArrow(playerArcher.body.x, playerArcher.body.y, 100, 10);  
-
+  arrow = new PlayerArrow(playerArcher.body.position.x, playerArcher.body.position.y, 100, 10);
+  
 }
 
 function draw() {
@@ -71,17 +69,21 @@ function draw() {
   computer.display();
   
   playerArcher.display();
-  computerArcher.display();
+  computerArcher.display()
+  
+  //if(keyCode === 32){
+  //   arrow.display()
+  //   arrow.shoot(playerArcher);
+  //}
 
-
-  //Display arrow();
-  arrow.display();
-
-  //if Space (32) key is pressed call shoot function of playerArrow
-  if(keyCode === 32){
-    //Call shoot() function and pass angle of playerArcher
-    arrow.shoot(playerArcher.body.angle);
-  }
+  //  if(keyCode === 32){
+  //   arrow.shoot(playerArcher.body.angle);
+  //  }
+   
+    if(keyCode === 32){
+     arrow.display()
+     arrow.shoot(playerArcher.body.angle);
+    }
 }
 
 

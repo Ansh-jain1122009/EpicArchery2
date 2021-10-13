@@ -25,4 +25,3 @@ class ComputerArrow {
     pop();
   }
 }
-
